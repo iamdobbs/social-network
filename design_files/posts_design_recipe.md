@@ -138,6 +138,7 @@ posts.length # =>  2
 posts.first # => '1'
 posts.first.title # => 'hello'
 posts.first.contents # => 'hello world'
+posts.first.views # => 10
 
 
 # 2
