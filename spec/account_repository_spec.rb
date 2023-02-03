@@ -29,28 +29,28 @@ RSpec.describe AccountRepository do
       expect(account.username).to eq('davidjones')
     end
 
-      # # 3
-      # # Create a new account record
-      # repo = AccountRepository.new
+    it 'creates a new account record' do
+      repo = AccountRepository.new
 
-      # account = Account.new
-      # account.username = 'makers'
+      account = Account.new
+      account.username = 'makers'
 
-      # repo.create(account)
+      repo.create(account)
 
-      # account = repo.all
-      # last_account = account.last
-      # last_account.username # => 'makers'
+      account = repo.all
+      last_account = account.last
+      expect(last_account.username).to eq('makers')
+    end  
 
-      # # 4
-      # # Deletes an account record
-      # repo = AccountRepository.new
+    it 'delete and account record' do
+      repo = AccountRepository.new
 
-      # repo.delete(1)
+      repo.delete(1)
 
-      # accounts = repo.all
-      # accounts.length # => 1
-      # accounts.first.id # => 2
+      accounts = repo.all
+      expect(accounts.length).to eq(1)
+      expect(accounts.first.id).to eq('2')
+    end  
 
       # # 5 
       # # Updates an account

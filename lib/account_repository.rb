@@ -33,20 +33,27 @@ class AccountRepository
     return account
   end
 
-  # # Add more methods below for each operation you'd like to implement.
 
-  # def create(account)
-  # # INSERT INTO accounts (username) VALUES ($1);
-  # # No return
-  # end
+  def create(account)
+    sql = 'INSERT INTO accounts (username) VALUES ($1);'
+    sql_params = [account.username]
+
+    DatabaseConnection.exec_params(sql, sql_params)
+
+    return nil
+  end
+
+  def delete(id)
+    sql = 'DELETE FROM accounts WHERE id = $1;'
+    sql_params = [id]
+
+    DatabaseConnection.exec_params(sql, sql_params)
+  end
 
   # def update(account)
   #   # UPDATE accounts SET username = $1 WHERE id = $2;
   #   # Returns nothing, just updates record
   # end
 
-  # def delete(id)
-  # # DELETE FROM accounts WHERE id = $1;
-  # # Return nothing
-  # end
+  
 end
