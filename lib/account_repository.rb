@@ -50,10 +50,10 @@ class AccountRepository
     DatabaseConnection.exec_params(sql, sql_params)
   end
 
-  # def update(account)
-  #   # UPDATE accounts SET username = $1 WHERE id = $2;
-  #   # Returns nothing, just updates record
-  # end
+  def update(account)
+    sql = 'UPDATE accounts SET username = $1 WHERE id = $2;'
+    sql_params = [account.username, account.id]
 
-  
+    DatabaseConnection.exec_params(sql, sql_params)
+  end 
 end

@@ -52,17 +52,17 @@ RSpec.describe AccountRepository do
       expect(accounts.first.id).to eq('2')
     end  
 
-      # # 5 
-      # # Updates an account
+    it 'updates an account record' do
 
-      # repo = AccountRepository.new
+      repo = AccountRepository.new
 
-      # account = repo.find(1)
-      # account.username = 'woolydog'
+      account = repo.find(1)
+      account.username = 'woolydog'
 
-      # repo.update(account)
+      repo.update(account)
 
-      # updated_acc = repo.find(1)
-      # updated_acc.username # => 'woolydog'
+      updated_acc = repo.find(1)
+      expect(updated_acc.username).to eq('woolydog')
+    end  
   end
 end
