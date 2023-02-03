@@ -4,5 +4,5 @@ require_relative 'lib/post_repository'
 
 DatabaseConnection.connect('social_network_database')
 
-sql = 'SELECT id, title, contents, account_id FROM posts;'
+sql = 'SELECT id, title, contents, views, account_id FROM posts;'
 result = DatabaseConnection.exec_params('SELECT * FROM accounts;', [])

@@ -24,43 +24,43 @@ RSpec.describe PostRepository do
       expect(posts.first.views).to eq('10')
     end  
 
+    it 'gets a single post record' do
+      repo = PostRepository.new
 
-      # # 2
-      # # Get a single post record
+      post = repo.find(1)
 
-      # repo = PostRepository.new
+      expect(post.id).to eq('1')
+      expect(post.title).to eq('hello')
+      expect(post.contents).to eq('hello world')
+    end  
 
-      # post = repo.find(1)
+    it 'creates a new post' do
 
-      # post.id # =>  1
-      # post.title # =>  'hello'
-      # post.contents # =>  'hello world'
+      repo = PostRepository.new
+      post = Post.new
+      post.title = 'Created'
+      post.contents = 'For tests'
+      post.views = '100'
+      post.account_id = '2'
 
-      # # 3
-      # # Create new post
+      repo.create(post) 
 
-      # repo = PostRepostiory.new
-      # post = Post.new
-      # post.title = 'Created'
-      # post.contents = 'For tests'
-      # post.account_id = 2
+      last_post = repo.find(3)
+      expect(last_post.title).to eq('Created')
+      expect(last_post.contents).to eq('For tests')
+      expect(last_post.views).to eq('100')
+      expect(last_post.account_id).to eq('2')
+    end  
 
-      # repo.create(post) 
+    it 'delete a record' do
 
-      # last_post = post.last
-      # last_post.title # => 'Created'
-      # last_post.contents # => 'For tests'
-      # las_post.account_id # => 2
+      repo = PostRepository.new
 
-      # # 4
-      # # Delete post
+      repo.delete(1)
 
-      # repo = PostRepository.new
-
-      # repo.delete(1)
-
-      # posts = repo.all
-      # posts.length # => 1
-      # posts.first.id # => 2
+      posts = repo.all
+      expect(posts.length).to eq(1)
+      expect(posts.first.id).to eq('2')
+    end  
   end
 end    
